@@ -64,8 +64,8 @@ public class Technician extends User{
                 //ΟΛοκλήρωση αιτήματος
                 stopTicket(ticket);
             }
-            t.tickets.clear();
         }
+        t.tickets.clear();
     }
     
     private void startTicket(Ticket ticket) {

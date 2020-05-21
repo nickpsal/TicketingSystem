@@ -40,7 +40,10 @@ public class TicketingSystem {
         Ticket ticket7 = user3.createTicket("Το Ρουτερ κανει επανεκινήσεις ", Category.INTERNET);
         Ticket ticket8 = user3.createTicket("Κολλάει τα Windows ", Category.APPLICATION);
         Ticket ticket9 = user3.createTicket("Τα windows μου βγάζουν μπλε οθόνη ", Category.OS);
+       
         // Ο τενικός υπεύθυνος προσθετη τα ticket
+        techManager.addTicket(ticket1);
+        techManager.addTicket(ticket2);
         techManager.addTicket(ticket3);
         techManager.addTicket(ticket4);
         techManager.addTicket(ticket5);
@@ -60,9 +63,9 @@ public class TicketingSystem {
         //Εκτύπωση αιτημάτων
         techManager.printTickets();
         //Οι τεχνικοί αναλαμβάνουν τα αιτήματα
+        //Παιρνάμε σαν παράμετρο μόνο τον πρωτο τεχνικό
+        //αλλα ελεγχουμε και για΄τους υπόλοιπους
         techManager.randomProcessTickets(technician1);
-        techManager.randomProcessTickets(technician2);
-        techManager.randomProcessTickets(technician3);
         System.out.println("");
         //Εκτυπωση μυνημάτων επιδιόρθωσης
         techManager.printActionTickets();
