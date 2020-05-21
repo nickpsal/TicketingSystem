@@ -30,7 +30,6 @@ public class Company {
 
     public void addTechnician(Technician t) {
         technicians.add(t);
-        //technicianManager.mapTechnician(t);
     }
 
     public List< Technician> getTechnicians() {

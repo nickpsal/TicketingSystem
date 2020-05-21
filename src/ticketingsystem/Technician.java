@@ -14,6 +14,8 @@ import java.util.Random;
  * @author nickpsal
  */
 public class Technician extends User{
+    //2. Ένας τεχνικός (Technician) έχει ένα όνομα και μια συγκεκριμένη εξειδίκευση,
+    //η οποία μπορεί να είναι μόνο μια εκ των "HARDWARE, SOFTWARE, NETWORK, COMMUNICATIONS"
     public enum TechSpec {HARDWARE, SOFTWARE, NETWORK, COMMUNICATIONS};
     private TechSpec techSpec;     
     Random r = new Random();
@@ -47,12 +49,19 @@ public class Technician extends User{
     public void setTechSpec(TechSpec techSpec) {
         this.techSpec = techSpec;
     }
-
+    //Για κάθε τεχνικό θα καλεί μέθοδο randomProcessTickets
+    //η οποία θα προσομοιώνει την επίλυση ενός αιτήματος από τον τεχνικό ακολουθώντας
+    //την προβλεπόμενη διαδικασία, όπου όμως το πλήθος των ενεργειών θα είναι τυχαίο
     public void randomProcessTickets(Technician t) {
         for (Ticket ticket:tickets) {
+            //Εκκίνηση της βλάβης εφόσον βρίσκεται σε κατάσταση ASSIGNED
             if (ticket.getStatus() == Ticket.Status.ASSIGNED) {
+                //έναρξη εξυπηρέτησης του αιτήματος (μέθοδος startTicket),
                 startTicket(ticket);
+                //Η πρόοδος της κάθε ενέργειας προστίθεται κάθε φορά στη συνολική ένδειξη
+                //προόδου του αιτήματος με την μέθοδος addAction
                 addAction(ticket);
+                //ΟΛοκλήρωση αιτήματος
                 stopTicket(ticket);
             }
             t.tickets.clear();
@@ -60,6 +69,7 @@ public class Technician extends User{
     }
     
     private void startTicket(Ticket ticket) {
+        //εκκίνηση επιδιόρθωσης
         TicketAction ticketAction = new TicketAction("Starting Ticket", 0);
         ticket.addAction(ticketAction);
         ticket.setStatus(Ticket.Status.IN_PROGRESS);
@@ -68,7 +78,10 @@ public class Technician extends User{
     private void addAction(Ticket ticket) {
         int random = 1;
         int max = 90;
+        //όσο η ramdom είναι μικρότερη απο την msx θα προσθέτει
+        //νεα action
         while (random<max) {
+            //οριζουμε τυχαίο αριθμό
             random = r.nextInt(max - random)+random+5;
             TicketAction ticketAction = new TicketAction("Simulating Fix", random);
             ticket.addAction(ticketAction);
@@ -77,6 +90,7 @@ public class Technician extends User{
     }
     
     private void stopTicket(Ticket ticket) {
+        //Τερματισμός επιδιόρθωσης
         TicketAction ticketAction = new TicketAction("Ticket Complete", 100);
         ticket.addAction(ticketAction);
         ticket.setStatus(Ticket.Status.COMPLETE);

@@ -18,6 +18,8 @@ public class TechnicianManager extends Technician{
     void assignTicketsToTechnicians(Technician t) {
         for (Ticket ticket:tickets) {
             switch (ticket.getCategory()) {
+                //Aιτήματα που αφορούν COMPUTER ή PRINTER τα αναθέτει
+                //στον τεχνικό με εξειδίκευση στο HARDWARE.
                 case COMPUTER:
                    if (t.getTechSpec() == TechSpec.HARDWARE){
                        ticket.setTechnician(t);
@@ -33,7 +35,8 @@ public class TechnicianManager extends Technician{
                        t.tickets.add(ticket);
                    }
                    break;
-                    
+                //Aιτήματα που αφορούν OS ή APPLICATION τα αναθέτει
+                //στον τεχνικό με εξειδίκευση στο SOFTWARE.    
                 case OS:
                     if (t.getTechSpec() == TechSpec.SOFTWARE){
                        ticket.setTechnician(t);
@@ -49,7 +52,8 @@ public class TechnicianManager extends Technician{
                        t.tickets.add(ticket);
                    }
                    break;
-                
+                //Aιτήματα που αφορούν INTERNET τα αναθέτει
+                //στον τεχνικό με εξειδίκευση στο NETWORK.
                 case INTERNET:
                     if (t.getTechSpec() == TechSpec.NETWORK){
                        ticket.setTechnician(t);
@@ -57,7 +61,8 @@ public class TechnicianManager extends Technician{
                        t.tickets.add(ticket);
                    }
                    break;
-                
+                //Aιτήματα που αφορούν PHONE τα αναθέτει
+                //στον τεχνικό με εξειδίκευση στο COMMUNICATIONS.
                 case PHONE:
                     if (t.getTechSpec() == TechSpec.COMMUNICATIONS){
                        ticket.setTechnician(t);
@@ -73,9 +78,5 @@ public class TechnicianManager extends Technician{
         for (Ticket ticket:tickets){
             System.out.println("TicketID : " + ticket.getTicketID() + " | Description : " + ticket.getDesc() + " | Category : " + ticket.getCategory() + " | Status : " + ticket.getStatus() + " | Technician : " + ticket.getTechnician().getName() + " | Progress : " + ticket.getProgress());
         }   
-    }
-
-    void mapTechnician(Technician t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -14,15 +14,23 @@ import java.util.List;
  */
 public class Ticket {
     private int ticketID;
+    //Μετρητης για τα ticketID
     private static int counter = 1;
     private User user;
+    // Τεχνικος του κάθε ticket 
     private Technician technician;
+    //Περιγραφή iicket
     private String desc;
+    //Ticket progress
     private int progress;
+    // Η Category μπορεί να έχει μόνο τις τιμές "COMPUTER, PRINTER, OS, APPLICATION, INTERNET, PHONE"
+    //αντικατοπρίζει τις κατηγορίες των αιτημάτων που μπορει να αντιμετωπίσει ο χρήστης
     public enum Category {COMPUTER, PRINTER, OS, APPLICATION, INTERNET, PHONE};
+    // Η Status μπορεί να έχει μόνο τις τιμές "WAITING, ASSIGNED, IN_PROGRESS, COMPLETE"
     public enum Status {WAITING, ASSIGNED, IN_PROGRESS, COMPLETE};
     private Status status;
     private Category category;
+    // Λίστα με όλες τις διαιδκάσιες που θα ακολουθήσει ο τεχνικός για την επιδιόρθωση της βλάβης
     private List<TicketAction> ticketActions;
     
     public Ticket(User user, String desc, Category category) {
@@ -32,6 +40,7 @@ public class Ticket {
         this.technician = technician;
         ticketActions = new ArrayList<>();
         this.category = category;
+        //Ένα αίτημα βρίσκεται σε κατάσταση WAITING μόλις δηλωθεί από το χρήστη
         this.status = Status.WAITING;
     }   
 
@@ -82,7 +91,7 @@ public class Ticket {
     public void setUser(User user) {
         this.user = user;
     }
-
+    // Aναθέτει τα αιτήματα στους τεχνικούς
     public void setTechnician(Technician technician) {
         this.technician = technician;
     }
