@@ -41,7 +41,7 @@ public class TicketingSystem {
         Ticket ticket8 = user3.createTicket("Κολλάει τα Windows ", Category.APPLICATION);
         Ticket ticket9 = user3.createTicket("Τα windows μου βγάζουν μπλε οθόνη ", Category.OS);
        
-        // Ο τενικός υπεύθυνος προσθετη τα ticket
+        // Ο τενικός υπεύθυνος προσθετει τα ticket
         techManager.addTicket(ticket1);
         techManager.addTicket(ticket2);
         techManager.addTicket(ticket3);
