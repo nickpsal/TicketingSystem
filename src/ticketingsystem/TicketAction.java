@@ -12,12 +12,12 @@ package ticketingsystem;
 public class TicketAction {
     private String action;
     private int progressAction;
-
+    //Constructor
     public TicketAction(String action, int progressAction) {
         this.action = action;
         this.progressAction = progressAction;
     }
-
+    // getters - setters
     public String getAction() {
         return action;
     }

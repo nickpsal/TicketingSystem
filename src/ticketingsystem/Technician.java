@@ -16,16 +16,17 @@ import java.util.Random;
 public class Technician extends User{
     //2. Ένας τεχνικός (Technician) έχει ένα όνομα και μια συγκεκριμένη εξειδίκευση,
     //η οποία μπορεί να είναι μόνο μια εκ των "HARDWARE, SOFTWARE, NETWORK, COMMUNICATIONS"
-    public enum TechSpec {HARDWARE, SOFTWARE, NETWORK, COMMUNICATIONS};
-    private TechSpec techSpec;     
+    public enum TechnicianSpec {HARDWARE, SOFTWARE, NETWORK, COMMUNICATIONS};
+    private TechnicianSpec techSpec;     
     Random r = new Random();
     List<Ticket> tickets;
-    public Technician(String name, TechSpec techSpec) {
+    //Constructor
+    public Technician(String name, TechnicianSpec techSpec) {
         super(name);
         this.techSpec = techSpec;
         this.tickets = new ArrayList<>();
     }
-
+    // getters - setters
     public List<Ticket> getTickets() {
         return tickets;
     }
@@ -42,11 +43,11 @@ public class Technician extends User{
         tickets.remove(ticket);
     }
     
-    public TechSpec getTechSpec() {
+    public TechnicianSpec getTechSpec() {
         return techSpec;
     }
 
-    public void setTechSpec(TechSpec techSpec) {
+    public void setTechSpec(TechnicianSpec techSpec) {
         this.techSpec = techSpec;
     }
     //Για κάθε τεχνικό θα καλεί μέθοδο randomProcessTickets
@@ -58,11 +59,6 @@ public class Technician extends User{
             if (ticket.getStatus() == Ticket.Status.ASSIGNED) {
                 //έναρξη εξυπηρέτησης του αιτήματος (μέθοδος startTicket),
                 startTicket(ticket);
-                //Η πρόοδος της κάθε ενέργειας προστίθεται κάθε φορά στη συνολική ένδειξη
-                //προόδου του αιτήματος με την μέθοδος addAction
-                addAction(ticket);
-                //ΟΛοκλήρωση αιτήματος
-                stopTicket(ticket);
             }
         }
         t.tickets.clear();
@@ -70,28 +66,37 @@ public class Technician extends User{
     
     private void startTicket(Ticket ticket) {
         //εκκίνηση επιδιόρθωσης
-        TicketAction ticketAction = new TicketAction("Starting Ticket", 0);
+        TicketAction ticketAction = new TicketAction("ΕΚΚΙΝΗΣΗ ΑΠΟΚΑΤΑΣΤΑΣΗΣ ΑΙΤΗΜΑΤΟΣ", 0);
         ticket.addAction(ticketAction);
         ticket.setStatus(Ticket.Status.IN_PROGRESS);
+        //Η πρόοδος της κάθε ενέργειας προστίθεται κάθε φορά στη συνολική ένδειξη
+        //προόδου του αιτήματος με την μέθοδος addAction
+        addAction(ticket);
     }
     
     private void addAction(Ticket ticket) {
         int random = 1;
         int max = 90;
+        //μετρητης βημάτων αποκατάστασης
+        int counter = 1;
         //όσο η ramdom είναι μικρότερη απο την msx θα προσθέτει
         //νεα action
         while (random<max) {
             //οριζουμε τυχαίο αριθμό
             random = r.nextInt(max - random)+random+5;
-            TicketAction ticketAction = new TicketAction("Simulating Fix", random);
+            String ActionTicket = "ΒΗΜΑ ΑΠΟΚΑΤΑΣΤΑΣΗΣ " + counter;
+            TicketAction ticketAction = new TicketAction(ActionTicket, random);
             ticket.addAction(ticketAction);
             ticket.setProgress(random);
+            counter++;
         }
+        //ΟΛοκλήρωση αιτήματος
+        stopTicket(ticket);
     }
     
     private void stopTicket(Ticket ticket) {
         //Τερματισμός επιδιόρθωσης
-        TicketAction ticketAction = new TicketAction("Ticket Complete", 100);
+        TicketAction ticketAction = new TicketAction("ΤΕΡΜΑΤΙΣΜΟΣ ΑΠΟΚΑΤΑΣΤΑΣΗΣ ΑΙΤΗΜΑΤΟΣ", 100);
         ticket.addAction(ticketAction);
         ticket.setStatus(Ticket.Status.COMPLETE);
         ticket.setProgress(100);
@@ -99,10 +104,11 @@ public class Technician extends User{
     
     public void printActionTickets() {
         for (Ticket ticket:tickets){
-            System.out.println("TicketID:" + ticket.getTicketID() + " | Description:" + ticket.getDesc() + " | Category:" + ticket.getCategory() + " | Status:" + ticket.getStatus() + " | Technician:" + ticket.getTechnician().getName() + " | Progress=" + ticket.getProgress());
+            System.out.println("TicketID : " + ticket.getTicketID() + " | ΠΕΡΙΓΡΑΦΗ : " + ticket.getPerigrafi() + " | ΚΑΤΗΓΟΡΙΑ : " + ticket.getCategory() + " | ΚΑΤΑΣΤΑΣΗ : " + ticket.getStatus() + " | ΟΝΟΜΑ ΤΕΧΝΙΚΟΥ : " + ticket.getTechnician().getName() + " | ΠΡΟΟΔΟΣ ΑΙΤΗΜΑΤΟΣ : " + ticket.getProgress());
             for (int i = 0; i<ticket.getTicketActions().size(); i++) {
-                System.out.println("Technician : " + ticket.getTechnician().getName() + " | Progress : " + ticket.getTicketActions().get(i).getProgressAction() + "| Action :" + ticket.getTicketActions().get(i).getAction());
+                System.out.println("ΟΝΟΜΑ ΤΕΧΝΙΚΟΣ : " + ticket.getTechnician().getName() + " | ΠΡΟΟΔΟΣ ΑΙΤΗΜΑΤΟΣ : " + ticket.getTicketActions().get(i).getProgressAction() + " | ΕΝΕΡΓΕΙΕΣ ΓΙΑ ΑΠΟΚΑΤΑΣΤΑΣΗ : " + ticket.getTicketActions().get(i).getAction());
             }
+            System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
             System.out.println("");
         } 
     }

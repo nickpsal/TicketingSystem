@@ -47,4 +47,8 @@ public class Company {
     public void setTechnicianManager(TechnicianManager technicianManager) {
         this.technicianManager = technicianManager;
     }
+    //getter για το όνομα της εταιρείας
+    public String getName() {
+        return name;
+    }
 }

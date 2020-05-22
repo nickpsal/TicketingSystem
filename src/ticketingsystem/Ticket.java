@@ -15,12 +15,12 @@ import java.util.List;
 public class Ticket {
     private int ticketID;
     //Μετρητης για τα ticketID
-    private static int counter = 1;
+    private static int counter = 0;
     private User user;
     // Τεχνικος του κάθε ticket 
     private Technician technician;
     //Περιγραφή iicket
-    private String desc;
+    private String perigrafi;
     //Ticket progress
     private int progress;
     // Η Category μπορεί να έχει μόνο τις τιμές "COMPUTER, PRINTER, OS, APPLICATION, INTERNET, PHONE"
@@ -32,18 +32,19 @@ public class Ticket {
     private Category category;
     // Λίστα με όλες τις διαιδκάσιες που θα ακολουθήσει ο τεχνικός για την επιδιόρθωση της βλάβης
     private List<TicketAction> ticketActions;
-    
+    //Constructor
     public Ticket(User user, String desc, Category category) {
         this.ticketID = counter++;
         this.user = user;
-        this.desc = desc;
+        this.perigrafi = desc;
         this.technician = technician;
+        //Λίστα που αποθηλεύονται οι ενέργείες αποκατάστασης της βλάβης
         ticketActions = new ArrayList<>();
         this.category = category;
         //Ένα αίτημα βρίσκεται σε κατάσταση WAITING μόλις δηλωθεί από το χρήστη
         this.status = Status.WAITING;
     }   
-
+    //getters - setters
     public int getTicketID() {
         return ticketID;
     }
@@ -60,8 +61,8 @@ public class Ticket {
         return technician;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getPerigrafi() {
+        return perigrafi;
     }
 
     public int getProgress() {
@@ -96,8 +97,8 @@ public class Ticket {
         this.technician = technician;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setPerigrafi(String perigrafi) {
+        this.perigrafi = perigrafi;
     }
 
     public void setProgress(int progress) {

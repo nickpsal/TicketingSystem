@@ -11,17 +11,17 @@ package ticketingsystem;
  */
 public class TechnicianManager extends Technician{
         
-    public TechnicianManager(String name, TechSpec techSpec) {
-        super(name,techSpec);
+    public TechnicianManager(String name, TechnicianSpec technicianSpec) {
+        super(name,technicianSpec);
     }
 
-    void assignTicketsToTechnicians(Technician t) {
+    public void assignTicketsToTechnicians(Technician t) {
         for (Ticket ticket:tickets) {
             switch (ticket.getCategory()) {
                 //Aιτήματα που αφορούν COMPUTER ή PRINTER τα αναθέτει
                 //στον τεχνικό με εξειδίκευση στο HARDWARE.
                 case COMPUTER:
-                   if (t.getTechSpec() == TechSpec.HARDWARE){
+                   if (t.getTechSpec() == TechnicianSpec.HARDWARE){
                        ticket.setTechnician(t);
                        ticket.setStatus(Ticket.Status.ASSIGNED);
                        t.tickets.add(ticket);
@@ -29,7 +29,7 @@ public class TechnicianManager extends Technician{
                    break;
                 
                 case PRINTER:
-                   if (t.getTechSpec() == TechSpec.HARDWARE){
+                   if (t.getTechSpec() == TechnicianSpec.HARDWARE){
                        ticket.setTechnician(t);
                        ticket.setStatus(Ticket.Status.ASSIGNED);
                        t.tickets.add(ticket);
@@ -38,7 +38,7 @@ public class TechnicianManager extends Technician{
                 //Aιτήματα που αφορούν OS ή APPLICATION τα αναθέτει
                 //στον τεχνικό με εξειδίκευση στο SOFTWARE.    
                 case OS:
-                    if (t.getTechSpec() == TechSpec.SOFTWARE){
+                    if (t.getTechSpec() == TechnicianSpec.SOFTWARE){
                        ticket.setTechnician(t);
                        ticket.setStatus(Ticket.Status.ASSIGNED);
                        t.tickets.add(ticket);
@@ -46,7 +46,7 @@ public class TechnicianManager extends Technician{
                    break;
                    
                 case APPLICATION:
-                    if (t.getTechSpec() == TechSpec.SOFTWARE){
+                    if (t.getTechSpec() == TechnicianSpec.SOFTWARE){
                        ticket.setTechnician(t);
                        ticket.setStatus(Ticket.Status.ASSIGNED);
                        t.tickets.add(ticket);
@@ -55,7 +55,7 @@ public class TechnicianManager extends Technician{
                 //Aιτήματα που αφορούν INTERNET τα αναθέτει
                 //στον τεχνικό με εξειδίκευση στο NETWORK.
                 case INTERNET:
-                    if (t.getTechSpec() == TechSpec.NETWORK){
+                    if (t.getTechSpec() == TechnicianSpec.NETWORK){
                        ticket.setTechnician(t);
                        ticket.setStatus(Ticket.Status.ASSIGNED);
                        t.tickets.add(ticket);
@@ -64,7 +64,7 @@ public class TechnicianManager extends Technician{
                 //Aιτήματα που αφορούν PHONE τα αναθέτει
                 //στον τεχνικό με εξειδίκευση στο COMMUNICATIONS.
                 case PHONE:
-                    if (t.getTechSpec() == TechSpec.COMMUNICATIONS){
+                    if (t.getTechSpec() == TechnicianSpec.COMMUNICATIONS){
                        ticket.setTechnician(t);
                        ticket.setStatus(Ticket.Status.ASSIGNED);
                        t.tickets.add(ticket);
@@ -76,7 +76,9 @@ public class TechnicianManager extends Technician{
 
     public void printTickets() {
         for (Ticket ticket:tickets){
-            System.out.println("TicketID : " + ticket.getTicketID() + " | Description : " + ticket.getDesc() + " | Category : " + ticket.getCategory() + " | Status : " + ticket.getStatus() + " | Technician : " + ticket.getTechnician().getName() + " | Progress : " + ticket.getProgress());
-        }   
+            //εκτύπωση των αιτημάτων πριν ανατεθούν
+            System.out.println("TicketID : " + ticket.getTicketID() + " | ΠΕΡΙΓΡΑΦΗ : " + ticket.getPerigrafi() + " | ΚΑΤΗΓΟΡΙΑ : " + ticket.getCategory() + " | ΚΑΤΑΣΤΑΣΗ : " + ticket.getStatus() + " | ΟΝΟΜΑ ΤΕΧΝΙΚΟΥ : " + ticket.getTechnician().getName() + " | ΠΡΟΟΔΟΣ ΑΙΤΗΜΑΤΟΣ : " + ticket.getProgress());
+        }
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
     }
 }

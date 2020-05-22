@@ -15,13 +15,14 @@ import java.util.Map;
 
 /**
  *
- * @author nickpsal
+ * @author nickp
  */
 public class TicketingController {
-    public void printTechniciansRanking(TechnicianManager techManager){
+     private List<Ticket> submittedTickets;     
+    public void printTechniciansRanking(TechnicianManager tech){
         HashMap<Technician, Double> technicianMeanActions = new HashMap<>();
         
-       for (Ticket ticket : techManager.tickets) {
+       for (Ticket ticket : tech.tickets) {
            Technician technician = ticket.getTechnician();
            double numberOfActions = ticket.getTicketActions().size();
            if (technicianMeanActions.containsKey(technician)){
