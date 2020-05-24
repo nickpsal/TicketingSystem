@@ -7,7 +7,7 @@ package ticketingsystem;
 
 /**
  *
- * @author alexandridis
+ * @author nickpsal
  */
 public class TicketAction {
     private String action;

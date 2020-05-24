@@ -10,11 +10,11 @@ import ticketingsystem.Technician.TechnicianSpec;
 
 /**
  *
- * @author alexandridis
+ * @author nickpsal
  */
 public class TicketingSystem {
         public static void main(String[] args) {
-        //Δημιουργεία νεας ταιρείας
+        //Δημιουργεία νεας εταιρείας
         Company company = new Company("ALEXANDRIDIS SUPPORT CENTER");
         // και 3 χρηστες
         User xristis1 = new User ("USER 1");
@@ -25,7 +25,7 @@ public class TicketingSystem {
         company.addUser(xristis2);
         company.addUser(xristis3);
         
-        //Προσθήκη 3 Τεχνιών και 1 τεχνικου υπέυθυννου        
+        //Προσθήκη 3 Τεχνικών και 1 τεχνικου υπέυθυννου        
         Technician texnikos1 = new Technician("Τεχνικός NETWORK", TechnicianSpec.NETWORK);
         Technician texnikos2 = new Technician("Τεχνικός SOFTWARE", TechnicianSpec.SOFTWARE);
         Technician texnikos3 = new Technician("Τεχνικός HARDWARE", TechnicianSpec.HARDWARE);

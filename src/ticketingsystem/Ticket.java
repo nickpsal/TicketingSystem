@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author alexandridis
+ * @author nickpsal
  */
 public class Ticket {
     private int ticketID;
@@ -19,7 +19,7 @@ public class Ticket {
     private User user;
     // Τεχνικος του κάθε ticket 
     private Technician technician;
-    //Περιγραφή iicket
+    //Περιγραφή ticket
     private String perigrafi;
     //Ticket progress
     private int progress;
@@ -30,7 +30,7 @@ public class Ticket {
     public enum Status {WAITING, ASSIGNED, IN_PROGRESS, COMPLETE};
     private Status status;
     private Category category;
-    // Λίστα με όλες τις διαιδκάσιες που θα ακολουθήσει ο τεχνικός για την επιδιόρθωση της βλάβης
+    // Λίστα με όλες τις διαδικάσιες που θα ακολουθήσει ο τεχνικός για την επιδιόρθωση της βλάβης
     private List<TicketAction> ticketActions;
     //Constructor
     public Ticket(User user, String desc, Category category) {
@@ -38,7 +38,7 @@ public class Ticket {
         this.user = user;
         this.perigrafi = desc;
         this.technician = technician;
-        //Λίστα που αποθηλεύονται οι ενέργείες αποκατάστασης της βλάβης
+        //Λίστα που αποθηκεύονται οι ενέργείες αποκατάστασης της βλάβης
         ticketActions = new ArrayList<>();
         this.category = category;
         //Ένα αίτημα βρίσκεται σε κατάσταση WAITING μόλις δηλωθεί από το χρήστη

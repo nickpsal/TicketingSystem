@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author alexandridis
+ * @author nickpsal
  */
 public class Company {
     private String name;

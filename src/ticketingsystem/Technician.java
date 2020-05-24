@@ -11,7 +11,7 @@ import java.util.Random;
 
 /**
  *
- * @author alexandridis
+ * @author nickpsal
  */
 public class Technician extends User{
     //2. Ένας τεχνικός (Technician) έχει ένα όνομα και μια συγκεκριμένη εξειδίκευση,

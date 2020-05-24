@@ -7,7 +7,7 @@ package ticketingsystem;
 
 /**
  *
- * @author alexandridis
+ * @author nickpsal
  */
 public class TechnicianManager extends Technician{
         
