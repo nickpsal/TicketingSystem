@@ -9,7 +9,7 @@ import ticketingsystem.Ticket.Category;
 
 /**
  *
- * @author nickpsal
+ * @author alexandridis
  */
 public class User {
     protected String name;    

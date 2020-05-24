@@ -10,12 +10,12 @@ import java.util.List;
 
 /**
  *
- * @author nickpsal
+ * @author alexandridis
  */
 public class Ticket {
     private int ticketID;
     //Μετρητης για τα ticketID
-    private static int counter = 1;
+    private static int counter = 0;
     private User user;
     // Τεχνικος του κάθε ticket 
     private Technician technician;
