@@ -65,8 +65,8 @@ public class TicketingSystem {
         System.out.println("---------------------------");
         technicianManager.printTickets();
         //Οι τεχνικοί αναλαμβάνουν τα αιτήματα
-        //δέχεται σνα όρισμα μόνο τον πρώτο τεχνικό αλλά
-        //αναλάμβάνει όλα τα ticket
+        //δέχεται σαν όρισμα μόνο τον πρώτο τεχνικό αλλά
+        //διαμοιράζει όλα τα ticket
         technicianManager.randomProcessTickets(texnikos1);
         System.out.println("");
         //Εκτυπωση μυνημάτων επιδιόρθωσης
